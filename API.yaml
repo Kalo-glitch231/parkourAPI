@@ -1,0 +1,317 @@
+---
+swagger: "2.0"
+info:
+  description: "Parkour API"
+  version: "2021-04-26T00:52:26Z"
+  title: "Roblox Parkour"
+host: "testapp.execute-api.us-east-1.amazonaws.com"
+basePath: "/prod"
+schemes:
+- "https"
+paths:
+  /v1/create-table:
+    post:
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "name"
+        in: "header"
+        required: false
+        type: "string"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Empty"
+      x-amazon-apigateway-integration:
+        type: "aws"
+        credentials: "arn:aws:iam::123456789:role/api-role"
+        httpMethod: "POST"
+        uri: "arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:123456789:function:CreateTableProd/invocations"
+        responses:
+          default:
+            statusCode: "200"
+        requestTemplates:
+          application/json: "{\r\n    \"method\": \"$context.httpMethod\",\r\n   \
+            \ \"body\" : $input.json('$'),\r\n    \"headers\": {\r\n        #foreach($param\
+            \ in $input.params().header.keySet())\r\n        \"$param\": \"$util.escapeJavaScript($input.params().header.get($param))\"\
+            \r\n        #if($foreach.hasNext),#end\r\n        #end\r\n    }\r\n}"
+        passthroughBehavior: "when_no_templates"
+        contentHandling: "CONVERT_TO_TEXT"
+    put:
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "name"
+        in: "header"
+        required: false
+        type: "string"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Empty"
+      x-amazon-apigateway-integration:
+        type: "aws"
+        credentials: "arn:aws:iam::123456789:role/api-role"
+        httpMethod: "POST"
+        uri: "arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:123456789:function:CreateTableProd/invocations"
+        responses:
+          default:
+            statusCode: "200"
+        requestTemplates:
+          application/json: "{\r\n    \"method\": \"$context.httpMethod\",\r\n   \
+            \ \"body\" : $input.json('$'),\r\n    \"headers\": {\r\n        #foreach($param\
+            \ in $input.params().header.keySet())\r\n        \"$param\": \"$util.escapeJavaScript($input.params().header.get($param))\"\
+            \r\n        #if($foreach.hasNext),#end\r\n        #end\r\n    }\r\n}"
+        passthroughBehavior: "when_no_templates"
+        contentHandling: "CONVERT_TO_TEXT"
+  /v1/leaderboards:
+    get:
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Empty"
+      x-amazon-apigateway-integration:
+        type: "aws"
+        credentials: "arn:aws:iam::123456789:role/api-role"
+        httpMethod: "POST"
+        uri: "arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:123456789:function:get-leaderboard-info-prod/invocations"
+        responses:
+          default:
+            statusCode: "200"
+        requestTemplates:
+          application/json: "{\r\n    \"method\": \"$context.httpMethod\",\r\n   \
+            \ \"body\" : $input.json('$'),\r\n    \"headers\": {\r\n        #foreach($param\
+            \ in $input.params().header.keySet())\r\n        \"$param\": \"$util.escapeJavaScript($input.params().header.get($param))\"\
+            \r\n        #if($foreach.hasNext),#end\r\n        #end\r\n    }\r\n}"
+        passthroughBehavior: "when_no_templates"
+        contentHandling: "CONVERT_TO_TEXT"
+  /v1/time-trials:
+    get:
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Empty"
+      x-amazon-apigateway-integration:
+        type: "aws"
+        credentials: "arn:aws:iam::123456789:role/api-role"
+        httpMethod: "POST"
+        uri: "arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:123456789:function:get-time-trial-info-prod/invocations"
+        responses:
+          default:
+            statusCode: "200"
+        requestTemplates:
+          application/json: "{\r\n    \"method\": \"$context.httpMethod\",\r\n   \
+            \ \"body\" : $input.json('$'),\r\n    \"headers\": {\r\n        #foreach($param\
+            \ in $input.params().header.keySet())\r\n        \"$param\": \"$util.escapeJavaScript($input.params().header.get($param))\"\
+            \r\n        #if($foreach.hasNext),#end\r\n        #end\r\n    }\r\n}"
+        passthroughBehavior: "when_no_templates"
+        contentHandling: "CONVERT_TO_TEXT"
+    put:
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "UID"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "Time_Trial"
+        in: "header"
+        required: false
+        type: "string"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Empty"
+      x-amazon-apigateway-integration:
+        type: "aws"
+        credentials: "arn:aws:iam::123456789:role/api-role"
+        httpMethod: "POST"
+        uri: "arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:123456789:function:update-time-trial-prod/invocations"
+        responses:
+          default:
+            statusCode: "200"
+        requestTemplates:
+          application/json: "{\r\n    \"method\": \"$context.httpMethod\",\r\n   \
+            \ \"body\" : $input.json('$'),\r\n    \"headers\": {\r\n        #foreach($param\
+            \ in $input.params().header.keySet())\r\n        \"$param\": \"$util.escapeJavaScript($input.params().header.get($param))\"\
+            \r\n        #if($foreach.hasNext),#end\r\n        #end\r\n    }\r\n}"
+        passthroughBehavior: "when_no_templates"
+        contentHandling: "CONVERT_TO_TEXT"
+    delete:
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Empty"
+      x-amazon-apigateway-integration:
+        type: "aws"
+        credentials: "arn:aws:iam::123456789:role/api-role"
+        httpMethod: "POST"
+        uri: "arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:123456789:function:delete_trial/invocations"
+        responses:
+          default:
+            statusCode: "200"
+        requestTemplates:
+          application/json: "{\r\n    \"method\": \"$context.httpMethod\",\r\n   \
+            \ \"body\" : $input.json('$'),\r\n    \"headers\": {\r\n        #foreach($param\
+            \ in $input.params().header.keySet())\r\n        \"$param\": \"$util.escapeJavaScript($input.params().header.get($param))\"\
+            \r\n        #if($foreach.hasNext),#end\r\n        #end\r\n    }\r\n}"
+        passthroughBehavior: "when_no_templates"
+        contentHandling: "CONVERT_TO_TEXT"
+  /v1/users:
+    get:
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "UID"
+        in: "header"
+        required: false
+        type: "string"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Empty"
+      x-amazon-apigateway-integration:
+        type: "aws"
+        credentials: "arn:aws:iam::123456789:role/api-role"
+        httpMethod: "POST"
+        uri: "arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:123456789:function:get-user-info-prod/invocations"
+        responses:
+          default:
+            statusCode: "200"
+        requestTemplates:
+          application/json: "{\r\n    \"method\": \"$context.httpMethod\",\r\n   \
+            \ \"body\" : $input.json('$'),\r\n    \"headers\": {\r\n        #foreach($param\
+            \ in $input.params().header.keySet())\r\n        \"$param\": \"$util.escapeJavaScript($input.params().header.get($param))\"\
+            \r\n        #if($foreach.hasNext),#end\r\n        #end\r\n    }\r\n}"
+        passthroughBehavior: "when_no_templates"
+        contentHandling: "CONVERT_TO_TEXT"
+    put:
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "UID"
+        in: "header"
+        required: false
+        type: "string"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Empty"
+      x-amazon-apigateway-integration:
+        type: "aws"
+        credentials: "arn:aws:iam::123456789:role/api-role"
+        httpMethod: "POST"
+        uri: "arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:123456789:function:update-user-info-prod/invocations"
+        responses:
+          default:
+            statusCode: "200"
+        requestTemplates:
+          application/json: "{\r\n    \"method\": \"$context.httpMethod\",\r\n   \
+            \ \"body\" : $input.json('$'),\r\n    \"headers\": {\r\n        #foreach($param\
+            \ in $input.params().header.keySet())\r\n        \"$param\": \"$util.escapeJavaScript($input.params().header.get($param))\"\
+            \r\n        #if($foreach.hasNext),#end\r\n        #end\r\n    }\r\n}"
+        passthroughBehavior: "when_no_templates"
+        contentHandling: "CONVERT_TO_TEXT"
+  /v1/users/leaderboards:
+    get:
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Empty"
+      x-amazon-apigateway-integration:
+        type: "aws"
+        credentials: "arn:aws:iam::123456789:role/api-role"
+        httpMethod: "POST"
+        uri: "arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:123456789:function:get-leaderboard-info-prod/invocations"
+        responses:
+          default:
+            statusCode: "200"
+        requestTemplates:
+          application/json: "{\r\n    \"method\": \"$context.httpMethod\",\r\n   \
+            \ \"body\" : $input.json('$'),\r\n    \"headers\": {\r\n        #foreach($param\
+            \ in $input.params().header.keySet())\r\n        \"$param\": \"$util.escapeJavaScript($input.params().header.get($param))\"\
+            \r\n        #if($foreach.hasNext),#end\r\n        #end\r\n    }\r\n}"
+        passthroughBehavior: "when_no_templates"
+        contentHandling: "CONVERT_TO_TEXT"
+    put:
+      produces:
+      - "application/json"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Empty"
+      x-amazon-apigateway-integration:
+        type: "aws"
+        credentials: "arn:aws:iam::123456789:role/api-role"
+        httpMethod: "POST"
+        uri: "arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:123456789:function:update-global-leaderboard/invocations"
+        responses:
+          default:
+            statusCode: "200"
+        passthroughBehavior: "when_no_match"
+        contentHandling: "CONVERT_TO_TEXT"
+    delete:
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Empty"
+      x-amazon-apigateway-integration:
+        type: "aws"
+        credentials: "arn:aws:iam::123456789:role/api-role"
+        httpMethod: "POST"
+        uri: "arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:123456789:function:clear-user-data/invocations"
+        responses:
+          default:
+            statusCode: "200"
+        requestTemplates:
+          application/json: "{\r\n    \"method\": \"$context.httpMethod\",\r\n   \
+            \ \"body\" : $input.json('$'),\r\n    \"headers\": {\r\n        #foreach($param\
+            \ in $input.params().header.keySet())\r\n        \"$param\": \"$util.escapeJavaScript($input.params().header.get($param))\"\
+            \r\n        #if($foreach.hasNext),#end\r\n        #end\r\n    }\r\n}"
+        passthroughBehavior: "when_no_templates"
+        contentHandling: "CONVERT_TO_TEXT"
+definitions:
+  Empty:
+    type: "object"
+    title: "Empty Schema"
